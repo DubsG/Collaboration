@@ -28,7 +28,7 @@ int print_pointer(va_list arguments, char buffer[], int flags,
 	buffer[BUFF_SIZE - 1] = '\0';
 	UNUSED(precision);
 
-	num_address = (unsigned long)addrs;
+	num_address = (unsigned long)address;
 
 	while (num_address > 0)
 	{
@@ -46,7 +46,6 @@ int print_pointer(va_list arguments, char buffer[], int flags,
 
 	ind++;
 
-	/*return (write(1, &buffer[i], BUFF_SIZE - i - 1));*/
 	return (write_pointer(buffer, ind, len, width, flags, padd,
 				added_char, padd_start));
 }

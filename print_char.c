@@ -15,7 +15,7 @@ int print_char(va_list arguments, char buffer[], int flags, int width,
 {
 	char c;
 
-	c = va_arg(types, int);
+	c = va_arg(arguments, int);
 
 	return (handle_write_char(c, buffer, flags, width, precision, size));
 }

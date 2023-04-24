@@ -27,7 +27,7 @@ int print_string(va_list arguments, char buffer[], int flags, int width,
 	{
 		string = "(nil)";
 		if (precision >= 6)
-			str = "      ";
+			string = "      ";
 	}
 	while (string[len] != '\0')
 		len++;

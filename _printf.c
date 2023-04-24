@@ -12,7 +12,7 @@ int _printf(const char *format, ...)
 {
 	int q;
 
-	printed = 0, char_printed = 0;
+	int printed = 0, char_printed = 0;
 	int flags, width, precision, size, buffer_index = 0;
 
 	va_list argument;

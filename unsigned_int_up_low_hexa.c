@@ -16,22 +16,22 @@ int print_hexa(va_list arguments, char mapping[], char buffer[], int flags,
 		char flag_ch, int width, int precision, int size)
 {
 	int q = BUFF_SIZE - 2;
-	unsigned long int numb = va_arg(arguments, unsigned long int);
+	unsigned long int num = va_arg(arguments, unsigned long int);
 	unsigned long int init_num = num;
 
 	UNUSED(width);
 
-	numb = convert_size_unsgnd(numb, size);
+	num = convert_size_unsgnd(num, size);
 
-	if (numb == 0)
+	if (num == 0)
 		buffer[q--] = '0';
 
 	buffer[BUFF_SIZE - 1] = '\0';
 
-	while (numb > 0)
+	while (num > 0)
 	{
-		buffer[q--] = mapping[numb % 16];
-		numb = numb / 16;
+		buffer[q--] = mapping[num % 16];
+		num = num / 16;
 	}
 
 	if (flags & F_HASH && init_num != 0)

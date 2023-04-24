@@ -20,7 +20,7 @@ int print_rot13string(va_list arguments, char buffer[], int flags, int width,
 	char in[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 	char out[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
 
-	str = va_arg(arguments, char *);
+	string = va_arg(arguments, char *);
 	UNUSED(buffer);
 	UNUSED(flags);
 	UNUSED(width);
@@ -29,11 +29,11 @@ int print_rot13string(va_list arguments, char buffer[], int flags, int width,
 
 	if (string == NULL)
 		string = "(AHYY)";
-	for (q = 0; str[q]; q++)
+	for (q = 0; string[q]; q++)
 	{
 		for (m = 0; in[m]; m++)
 		{
-			if (in[m] == str[q])
+			if (in[m] == string[q])
 			{
 				x = out[m];
 				write(1, &x, 1);
@@ -43,7 +43,7 @@ int print_rot13string(va_list arguments, char buffer[], int flags, int width,
 		}
 		if (!in[m])
 		{
-			x = str[q];
+			x = string[q];
 			write(1, &x, 1);
 			count++;
 		}

@@ -15,22 +15,22 @@ int print_octal(va_list arguments, char buffer[], int flags, int width,
 {
 
 	int q = BUFF_SIZE - 2;
-	unsigned long int numb = va_arg(types, unsigned long int);
-	unsigned long int init_num = numb;
+	unsigned long int num = va_arg(arguments, unsigned long int);
+	unsigned long int init_num = num;
 
 	UNUSED(width);
 
-	numb = convert_size_unsgnd(numb, size);
+	num = convert_size_unsgnd(num, size);
 
-	if (numb == 0)
+	if (num == 0)
 		buffer[q--] = '0';
 
 	buffer[BUFF_SIZE - 1] = '\0';
 
-	while (numb > 0)
+	while (num > 0)
 	{
-		buffer[q--] = (numb % 8) + '0';
-		numb = numb / 8;
+		buffer[q--] = (num % 8) + '0';
+		num = num / 8;
 	}
 
 	if (flags & F_HASH && init_num != 0)

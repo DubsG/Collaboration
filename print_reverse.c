@@ -31,12 +31,12 @@ int print_reverse(va_list arguments, char buffer[], int flags, int width,
 
 		string = "(Null)";
 	}
-	for (q = 0; str[q]; q++)
+	for (q = 0; string[q]; q++)
 		;
 
 	for (q = q - 1; q >= 0; q--)
 	{
-		char c = str[q];
+		char c = string[q];
 
 		write(1, &c, 1);
 		count++;

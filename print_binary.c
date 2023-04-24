@@ -24,8 +24,8 @@ int print_binary(va_list arguments, char buffer[], int flags, int width,
 	UNUSED(precision);
 	UNUSED(size);
 
-	n = va_arg(types, unsigned int);
-	q = 2147483648; /* (2 ^ 31) */
+	n = va_arg(arguments, unsigned int);
+	q = 2147483648;
 	a[0] = n / q;
 	for (y = 1; y < 32; y++)
 	{

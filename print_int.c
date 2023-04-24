@@ -16,7 +16,7 @@ int print_int(va_list arguments, char buffer[], int flags, int width,
 	int q = BUFF_SIZE - 2;
 	int is_negative = 0;
 	long int n = va_arg(arguments, long int);
-	unsigned long int numb;
+	unsigned long int num;
 
 	n = convert_size_number(n, size);
 
@@ -24,7 +24,7 @@ int print_int(va_list arguments, char buffer[], int flags, int width,
 		buffer[q--] = '0';
 
 	buffer[BUFF_SIZE - 1] = '\0';
-	numb = (unsigned long int)n;
+	num = (unsigned long int)n;
 
 	if (n < 0)
 	{
@@ -32,7 +32,7 @@ int print_int(va_list arguments, char buffer[], int flags, int width,
 		is_negative = 1;
 	}
 
-	while (numb > 0)
+	while (num > 0)
 	{
 		buffer[q--] = (num % 10) + '0';
 		num = num / 10;
