@@ -1,56 +1,56 @@
 #include "main.h"
+#include <unistd.h>
 
 /**
- * print_string - Prints a string
- * @types: List a of arguments
- * @buffer: Buffer array to handle print
- * @flags:  Calculates active flags
- * @width: get width.
- * @precision: Precision specification
- * @size: Size specifier
- * Return: Number of chars printed
+ * print_string - Prints strings of character
+ * @arguments: parameter for arguments
+ * @buffer: parameter for buffer array to handle strings
+ * @flags:  parameter for calculated active flags
+ * @width: parameter for width.
+ * @precision: parameter for Precision specifier
+ * @size: parameter for size specifier
+ * Return: Return strings of character printed
  */
-int print_string(va_list types, char buffer[],
-	int flags, int width, int precision, int size)
+int print_string(va_list arguments, char buffer[], int flags, int width,
+		int precision, int size)
 {
-	int length = 0, i;
-	char *str = va_arg(types, char *);
+	int len = 0;
+	int q;
+	char *string = va_arg(arguments, char *);
 
 	UNUSED(buffer);
 	UNUSED(flags);
 	UNUSED(width);
 	UNUSED(precision);
 	UNUSED(size);
-	if (str == NULL)
+	if (string == NULL)
 	{
-		str = "(null)";
+		string = "(nil)";
 		if (precision >= 6)
 			str = "      ";
 	}
+	while (string[len] != '\0')
+		len++;
 
-	while (str[length] != '\0')
-		length++;
+	if (precision >= 0 && precision < len)
+		len = precision;
 
-	if (precision >= 0 && precision < length)
-		length = precision;
-
-	if (width > length)
+	if (width > len)
 	{
 		if (flags & F_MINUS)
 		{
-			write(1, &str[0], length);
-			for (i = width - length; i > 0; i--)
+			write(1, &string[0], len);
+			for (q = width - len; q > 0; q--)
 				write(1, " ", 1);
 			return (width);
 		}
 		else
 		{
-			for (i = width - length; i > 0; i--)
+			for (q = width - len; q > 0; q--)
 				write(1, " ", 1);
-			write(1, &str[0], length);
+			write(1, &string[0], len);
 			return (width);
 		}
 	}
-
-	return (write(1, str, length));
+	return (write(1, string, len));
 }

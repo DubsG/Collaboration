@@ -2,17 +2,17 @@
 
 /**
  * print_hexa_upper - Prints an unsigned number in upper hexadecimal notation
- * @types: Lista of arguments
- * @buffer: Buffer array to handle print
- * @flags:  Calculates active flags
- * @width: get width
- * @precision: Precision specification
- * @size: Size specifier
- * Return: Number of chars printed
+ * @arguments: parameter for arguments
+ * @buffer: parameter for buffer to handle printed args
+ * @flags: parameter for calculated flags
+ * @width: parameter for width
+ * @precision: parameter for Precision specifier
+ * @size: parameter for size specifier
+ * Return: return character printed
  */
-int print_hexa_upper(va_list types, char buffer[],
-	int flags, int width, int precision, int size)
+int print_hexa_upper(va_list arguments, char buffer[], int flags, int width,
+		int precision, int size)
 {
-	return (print_hexa(types, "0123456789ABCDEF", buffer,
-		flags, 'X', width, precision, size));
+	return (print_hexa(arguments, "0123456789ABCDEF", buffer, flags, 'X',
+				width, precision, size));
 }
